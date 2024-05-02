@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class LoginMain {
-
+  
+        //TODO: please Create a class like "LoginValidator" and add this method to it , don't make it static..
         public static void validateLogin() {
+                //TODO: please rename this variable to a more descriptive name.
                 boolean isInvalid;
                 do {
                         Scanner sc = new Scanner(System.in);
@@ -15,18 +17,23 @@ public class LoginMain {
                                 System.out.println("Invalid username or password!, Please try again.");
                         }else{
                                 isInvalid = false;
+                                //TODO: please rename this variable to a more descriptive name.
                                 User uAcc = LoginData.searchUserInList(userName,passWord);
                                 if (uAcc.getUserType()==1){
                                         System.out.println("Login successful!, Mr: "+uAcc.getUserName()+ " Here is List of Your Students:");
+                                        //TODO: try to find away to call this function using object of the class instead of the static solution.
                                         Instructors.printInstructorStudents();
                                 } else if (uAcc.getUserType()==2) {
                                         System.out.println("Login successful!, Student: "+uAcc.getUserName()+ " List of Your Courses:");
+                                        //TODO: try to find away to call this function using object of the class instead of the static solution.
                                         Students.printStudentCourses();
                                 }
                         }
                 }
                 while (isInvalid);
         }
+
+        //TODO: please use loops .
         public static void main(String[] args) {
         Instructors instructor1 = new Instructors("instructor1","instPass1",1);
         Instructors instructor2 = new Instructors("instructor2","instPass2",1);

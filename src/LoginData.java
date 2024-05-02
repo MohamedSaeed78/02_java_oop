@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+//TODO: since you are applying singleton pattern , no need to make things (variables, methods) static.
+//you can use LoginData.getInstance() , for example : LoginData.getInstance().searchUserInList(...). 
+//apply this to all functions , variables except instance, getInstance() . 
 public class LoginData {
     private static LoginData instance = null;
     private static ArrayList<User> usersList ;
@@ -19,6 +22,7 @@ public class LoginData {
         return instance;
     }
 
+    //please rename this function
     public boolean isAvailable(Object obj) {
         for (Object objterate : usersList) {
             if (objterate.equals(obj)) {
