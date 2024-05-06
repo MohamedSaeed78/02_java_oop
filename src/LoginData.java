@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 //TODO: since you are applying singleton pattern , no need to make things (variables, methods) static.
 //you can use LoginData.getInstance() , for example : LoginData.getInstance().searchUserInList(...). 
-//apply this to all functions , variables except instance, getInstance() . 
+//apply this to all functions , variables except instance, getInstance() . (done)
 public class LoginData {
     private static LoginData instance = null;
-    private static ArrayList<User> usersList ;
-    private static final String[] courses = {
+    private ArrayList<User> usersList ;
+    private final String[] courses = {
             "Java Programming",
             "Web Development",
             "Data Science",
@@ -22,8 +22,8 @@ public class LoginData {
         return instance;
     }
 
-    //please rename this function
-    public boolean isAvailable(Object obj) {
+    //please rename this function (done)
+    public boolean isUserAvailable(Object obj) {
         for (Object objterate : usersList) {
             if (objterate.equals(obj)) {
                 return true;
@@ -31,8 +31,8 @@ public class LoginData {
         }
         return false;
     }
-    //return user data as user object from usre name and password
-    public static User searchUserInList(String uName, String uPassword){
+    //return user data as user object from user name and password
+    public User searchUserInList(String uName, String uPassword){
         for (User user:getUsersList()){
             if (user.getUserName().equals(uName) && user.getPassWord().equals(uPassword)){
                 return user;
@@ -42,7 +42,7 @@ public class LoginData {
     }
     
     public void addUser(User user) {
-        if (isAvailable(user)) {
+        if (isUserAvailable(user)) {
             System.out.println(user.getUserName() + " is already in list.");
         } else {
             usersList.add(user);
@@ -50,11 +50,11 @@ public class LoginData {
         }
     }
 
-    public static ArrayList<User> getUsersList() {
+    public ArrayList<User> getUsersList() {
         return usersList;
     }
 
-    public static void getListOfStudentsPrinted() {
+    public void getListOfStudentsPrinted() {
         for (User user : usersList) {
             if (user.getUserType() == 2) {
                 System.out.println("- "+user.getUserName());
@@ -62,7 +62,7 @@ public class LoginData {
         }
     }
 
-    public static void getCoursesPrinted() {
+    public void getCoursesPrinted() {
         for (String course : courses) {
             System.out.println("- " + course);
         }
